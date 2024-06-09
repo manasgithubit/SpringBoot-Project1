@@ -1,0 +1,6 @@
+<beans>
+	<!-- Spring beans cfgs-->
+	<bean id = "dt" class = "java.util.Date"/>
+	<bean id = "wmg" class = "com.nt.beans.WishMessageGenerator"/><bean />
+	<property name = "date" ref = "dt"/>
+</beans>
