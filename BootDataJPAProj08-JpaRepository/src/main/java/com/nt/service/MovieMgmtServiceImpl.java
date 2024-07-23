@@ -1,4 +1,4 @@
-	//service impl class
+//service impl class
 package com.nt.service;
 
 import java.util.List;
@@ -16,8 +16,7 @@ import com.nt.entity.Movies;
 import com.nt.repository.IMovieRepo;
 
 @Service("movieService")
-public class MovieMgmtServiceImpl implements IMovieMgmtService {
-
+public  class MovieMgmtServiceImpl implements IMovieMgmtService {
 	@Autowired //injects the dynamically generated proxy class object
 	private IMovieRepo movieRepo;  //HAS-A property
 
@@ -25,12 +24,13 @@ public class MovieMgmtServiceImpl implements IMovieMgmtService {
 	public String removieMoviesByIds(List<Integer> ids) {
 		List<Movies> list = movieRepo.findAllById(ids);
 		long count = list.size();
-			movieRepo.deleteAllByIdInBatch(ids);
-		return count +"no of records are deleted";
-	}
+		   movieRepo.deleteAllById(ids);
+		   return count + "no of records are deleted";
+		}
 
 	@Override
 	public List<Movies> searchMoviesByMovie(Movies movie, boolean asc, String... props) {
+		// TODO Auto-generated method stub
 		Example example = Example.of(movie);
 		Sort sort = Sort.by(asc?Direction.ASC:Direction.DESC,props);
 		List<Movies> list = movieRepo.findAll(example,sort);
@@ -42,9 +42,9 @@ public class MovieMgmtServiceImpl implements IMovieMgmtService {
 		Movies movie = movieRepo.getById(id);
 		System.out.println(movie.getClass());
 		if(movie==null)
-			  throw new IllegalArgumentException("given movie not avaiable");
+			 throw new IllegalArgumentException("given movie not avaiable");
 		else
-		return movie;
+		     return movie;
 	}
-}//class
+}//class  
 

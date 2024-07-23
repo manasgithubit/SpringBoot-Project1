@@ -1,5 +1,6 @@
 package com.nt.runner;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,34 +25,39 @@ public class CrudRepoTestRunner implements CommandLineRunner {
 	/*	System.out.println("------ deleteAllByIdInBatch(-) ----------");
 		try
 		{
-			System.out.println(service.removieMoviesByIds(List.of(513,515)));
+			//System.out.println(service.removieMoviesByIds(List.of(513,515)));
+			List<Integer> ids = new ArrayList<>();
+			ids.add(567);
+			ids.add(null);
+			List<Integer> ids = Arrays.asList(13,null);
+			    System.out.println(service.removieMoviesByIds(ids));
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}*/
 		
-	/*	System.out.println("------ deleteAllByIdInBatch(-) ----------");
+	/*	System.out.println("------ findAll(Example,Sort) ----------");
 		try
 		{
-			Movies movie = new Movies();
-			movie.setMid(100);movie.setMname("RRR");
-			movie.setRating(4.0f); movie.setYear("2021");
-			List<Movies> list = service.searchMoviesByMovie(movie, true, "mname");
-			list.forEach(System.out::println);
-		}
-		catch(Exception e)
-		{
+			 Movies movie = new Movies();
+			 movie.setMid(101);
+			 movie.setMname("Puspa");
+			 movie.setRating(5.0f); movie.setYear("2023");
+			 List<Movies> list = service.searchMoviesByMovie(movie, true, "mname");
+			 list.forEach(System.out::println);
+		}//try
+		catch (Exception e) {
+			// TODO: handle exception
 			e.printStackTrace();
 		}*/
 		
-		System.out.println("---------getById(Integer id)-------");
+		System.out.println("------ getById(Integer id) ----------");
 		try
 		{
-			System.out.println("416 Movie Details are" + service.serchMoviesById(416));
-		}
-		catch(Exception e)
-		{
+			System.out.println("416 Movie details are" + service.serchMoviesById(416));
+		}//try
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}//main
