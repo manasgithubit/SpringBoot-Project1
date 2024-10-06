@@ -69,7 +69,7 @@ public class ProductService {
 
 	public List<Product> getFilteredAndSortedProducts(String category, Double minPrice, Double maxPrice,
 			Boolean inStock, String sortField, String sortOrder) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 }

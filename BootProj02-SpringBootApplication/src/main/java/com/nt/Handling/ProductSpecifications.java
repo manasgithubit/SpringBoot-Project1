@@ -24,25 +24,26 @@ public class ProductSpecifications {
         Sort sort = Sort.by(Sort.Order.by(sortField).with(Sort.Direction.fromString(sortOrder)));
 
         Specification<Product> specification = (root, query, criteriaBuilder) -> {
-            List<Predicate> predicates = new ArrayList<>();
+            List<Product> product  = new ArrayList<>();
 
             if (category != null) {
-                predicates.add(criteriaBuilder.equal(root.get("category"), category));
+            	 product .add((Product) criteriaBuilder.equal(root.get("category"), category));
             }
             if (minPrice != null && maxPrice != null) {
-                predicates.add(criteriaBuilder.between(root.get("price"), minPrice, maxPrice));
+            	 product .add((Product) criteriaBuilder.between(root.get("price"), minPrice, maxPrice));
             } else if (minPrice != null) {
-                predicates.add(criteriaBuilder.greaterThanOrEqualTo(root.get("price"), minPrice));
+            	 product .add((Product) criteriaBuilder.greaterThanOrEqualTo(root.get("price"), minPrice));
             } else if (maxPrice != null) {
-                predicates.add(criteriaBuilder.lessThanOrEqualTo(root.get("price"), maxPrice));
+            	 product .add((Product) criteriaBuilder.lessThanOrEqualTo(root.get("price"), maxPrice));
             }
             if (inStock != null) {
-                predicates.add(criteriaBuilder.equal(root.get("inStock"), inStock));
+            	 product .add((Product) criteriaBuilder.equal(root.get("inStock"), inStock));
             }
 
-            return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
+            return criteriaBuilder.and( product .toArray(new Predicate[0]));
         };
 
-        return productRepository.findAll(specification, sort);
+        
+		return  productRepository.findAll() ;
     }
 }

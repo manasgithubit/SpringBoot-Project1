@@ -18,4 +18,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
+
+	
 }
